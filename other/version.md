@@ -30,50 +30,32 @@ Description: A plugin
 */
 ```
 
-**2. Update version in other related files such as package.json**
+**2a. If project has a package.json**
 
-package.json can be updated with the `npm version` command;
+If package has a package.json the rest og versioning can be updated with the `npm version` command;
 
 ```shell
 npm version patch
 ```
-```json
+This will update the version in package.json, create a commit and tag via git.
 
-This will update the version in package.json:
 
-{
-  "name": "awesome-plugin",
-  "version": "1.0.2",
-  "description": "A plugin",
-  "main": "gulpfile.js",
-  "dependencies": {
-  },
-  "author": "The author",
-  "licenses": {
-    "type": "MIT",
-    "url": "http://opensource.org/licenses/MIT"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git@bitbucket.org:awesome-plugin.git"
-  }
-}
-```
+**2b. If no package.json, you need to commit your changes and create a tag with git**
 
-**3. Commit your changes with git**
+Commit:
 
 ```
 git add -A
 git commit -m "Version 1.0.2"
 ```
 
-**4. Create a git tag**
+Create tag:
 
 ```
 git tag -a v1.0.2 -m "Version 1.0.2"
 ```
 
-**5. Push commits and version tag**
+**3. Push commits and version tag**
 
 ```
 git push origin master && git push origin master --tags
@@ -89,20 +71,7 @@ Node projects only need to use the `npm version` command.
 npm version patch
 ```
 
-**2. Commit your changes with git**
-
-```
-git add -A
-git commit -m "Version 1.0.2"
-```
-
-**3. Create a git tag**
-
-```
-git tag -a v1.0.2 -m "Version 1.0.2"
-```
-
-**4. Push commits and version tag**
+**2. Push commits and version tag**
 
 ```
 git push origin master && git push origin master --tags
