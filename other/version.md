@@ -17,7 +17,7 @@ These version changes correlate to the degree of change done.
 * Minor version intruduces new features or bigger changes, but will not break anything old.
 * Patch is just a bugfix or other very small changes.
 
-## Versioning a Wordpress plugin or theme
+## Versioning a Wordpress plugin or theme where package.json is available
 
 **1. Update version in your plugins main file**
 
@@ -30,32 +30,49 @@ Description: A plugin
 */
 ```
 
-**2a. If project has a package.json**
+**2. Bump version with npm**
 
-If package has a package.json the rest og versioning can be updated with the `npm version` command;
+If package has a package.json the rest of versioning can be updated with the `npm version` command;
 
 ```shell
 npm version patch
 ```
 This will update the version in package.json, create a commit and tag via git.
 
+**3. Push commits and version tag**
 
-**2b. If no package.json, you need to commit your changes and create a tag with git**
+```
+git push origin master && git push origin master --tags
+```
 
-Commit:
+## Versioning a Wordpress plugin or theme without a package.json
+
+
+**1. Update version in your plugins main file**
+
+```php
+/*
+Plugin Name: Awesome plugin
+Version: 1.0.2
+Author: The author
+Description: A plugin
+*/
+```
+
+**2. Commit your changes**
 
 ```
 git add -A
 git commit -m "Version 1.0.2"
 ```
 
-Create tag:
+**3. Create a tag with git**
 
 ```
 git tag -a v1.0.2 -m "Version 1.0.2"
 ```
 
-**3. Push commits and version tag**
+**4. Push commits and version tag**
 
 ```
 git push origin master && git push origin master --tags
